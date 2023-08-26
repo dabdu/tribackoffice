@@ -8,10 +8,8 @@ import { getDateFromCreated } from "../../constants/functions";
 import { PrimaryBtn } from "../../components/Form";
 import { toast } from "react-toastify";
 import { Spinner } from "../../components/Generic";
+import { TableData } from "../../components/Layouts/Table";
 
-const TableData = ({ children }) => (
-  <td className="px-6 py-2 text-black">{children}</td>
-);
 export default function ResAdmins() {
   const [loading, setLoading] = useState(false);
   const [resAdmins, setResAdmins] = useState([]);

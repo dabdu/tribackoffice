@@ -5,10 +5,8 @@ import { useEffect, useState } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import { api, header } from "../../constants/lib/axiosInstance";
 import { getDateFromCreated } from "../../constants/functions";
+import { TableData } from "../../components/Layouts/Table";
 
-const TableData = ({ children }) => (
-  <td className="px-6 py-2 text-black">{children}</td>
-);
 export default function Restaurants() {
   const [loading, setLoading] = useState(false);
   const [resAdmins, setResAdmins] = useState([]);

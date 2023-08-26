@@ -4,37 +4,33 @@ import { useEffect, useState } from "react";
 
 import PulseLoader from "react-spinners/PulseLoader";
 import { api, header } from "../../constants/lib/axiosInstance";
-import {
-  covertedTime,
-  getDateFromCreated,
-  getWordMonthDate,
-} from "../../constants/functions";
+import { getDateFromCreated } from "../../constants/functions";
 import { TableData } from "../../components/Layouts/Table";
 
-export default function Reservations() {
+export default function Dishes() {
   const [loading, setLoading] = useState(false);
-  const [reservations, setReservations] = useState([]);
+  const [dishes, setDishes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
-    const getReservations = async () => {
-      const res = await api.get(`reservations`, {
+    const getDishes = async () => {
+      const res = await api.get(`dishes`, {
         headers: header(),
       });
       const data = await res.data;
       console.log(data);
       if (data.length > 0) {
-        setReservations(data);
+        setDishes(data);
       }
       setLoading(false);
     };
 
-    getReservations();
+    getDishes();
   }, []);
   return (
     <div>
-      <div className="text-xl pt-1">Reservations({reservations?.length})</div>
+      <div className="text-xl pt-1">All Dishes({dishes?.length})</div>
       <div className="bg-white mt-4 p-6">
         <div
           className={` relative scroll-div overflow-scroll mt-4 shadow-md  w-100% sm:rounded-lg`}
@@ -59,22 +55,22 @@ export default function Reservations() {
               <thead className="text-xs sticky top-0 right-0 left-0 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                    Customer
+                    Photo
+                  </th>
+                  <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                    Price
+                  </th>
+                  <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                    Type
                   </th>
                   <th scope="col" className="px-6 py-3 whitespace-nowrap">
                     Restaurant
                   </th>
                   <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                    Persons
-                  </th>
-                  <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                    Check IN Date
-                  </th>
-                  <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                    Check IN Time
-                  </th>
-                  <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                    Status
+                    Location
                   </th>
                   <th scope="col" className="px-6 py-3 whitespace-nowrap">
                     Date
@@ -82,27 +78,36 @@ export default function Reservations() {
                 </tr>
               </thead>
               <tbody className=" pt-8">
-                {reservations.length &&
-                  reservations.map((item) => (
+                {dishes.length &&
+                  dishes.map((item) => (
                     <tr
-                      key={item?._id}
                       className="bg-white border-b border-b-blue-400 dark:bg-gray-800 dark:border-gray-700 pt-8  hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer"
-                      onClick={() =>
-                        navigate(`/reservation-details/${item?._id}`)
-                      }
+                      // onClick={() => navigate(`/householddetail/${farmer.UID}`)}
                     >
-                      <TableData>{item?.userId?.name}</TableData>
                       <TableData>
-                        {item?.restaurantId?.restaurantName}
+                        <img
+                          src={item?.menuImg}
+                          className="h-[60px] w-[80px] rounded-lg"
+                        />
                       </TableData>
-                      <TableData>{item?.reservePersons}</TableData>
+                      <TableData>{item?.menuName}</TableData>
                       <TableData>
-                        {getWordMonthDate(item?.checkInDate)}
+                        {item.discountedPrice !== 0 && (
+                          <p className="">
+                            N{item?.discountedPrice?.toLocaleString()}
+                          </p>
+                        )}
+                        <p
+                          className={`${
+                            item.discountedPrice !== 0 ? "line-through" : ""
+                          }`}
+                        >
+                          N{item?.price?.toLocaleString()}
+                        </p>
                       </TableData>
-                      <TableData>{covertedTime(item?.checkInTime)}</TableData>
-                      <TableData>
-                        <p className="bg-primary rounded-sm px-2 py-1 text-white">{`${item?.status}`}</p>
-                      </TableData>
+                      <TableData>{`${item?.menuType}`}</TableData>
+                      <TableData>{`${item?.restaurantId?.restaurantName}`}</TableData>
+                      <TableData>{item?.location}</TableData>
                       <TableData>
                         {getDateFromCreated(item?.createdAt)}
                       </TableData>
