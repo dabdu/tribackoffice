@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Dashboard } from "../pages";
+import { CustomSetting, Dashboard } from "../pages";
 import { MainLayout } from "../components/Layouts";
 import { Login, RestaurantVendorRegistration } from "../pages/auth";
 import ProtectedRoute from "../components/Auth/ProtectedRoutes";
@@ -31,6 +31,7 @@ export const AdminRoutes = () => {
               path="/reservation-details/:id"
               element={<ReservationDetails />}
             />
+            <Route path="/custom-settings" element={<CustomSetting />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />

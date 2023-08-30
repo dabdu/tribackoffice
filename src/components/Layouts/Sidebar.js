@@ -8,6 +8,7 @@ import {
   MdOutlineRestaurantMenu,
 } from "react-icons/md";
 import { AiFillDribbbleCircle } from "react-icons/ai";
+import { BiCog } from "react-icons/bi";
 
 const linkClass =
   "flex items-center w-full  gap-2 mt-4 transition-colors duration-300  px-3 py-2 hover:no-underline rounded-md text-base";
@@ -55,6 +56,12 @@ const items = [
         label: "Dish Orders",
         path: "/dish-orders",
         icon: <AiFillDribbbleCircle className="text-xl text-primary" />,
+      },
+      {
+        key: "custom-settings",
+        label: "Dish Orders",
+        path: "/custom-settings",
+        icon: <BiCog className="text-xl text-primary" />,
       },
     ],
   },
