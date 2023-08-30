@@ -5,6 +5,7 @@ import { MainLayout } from "../components/Layouts";
 import { Login, RestaurantVendorRegistration } from "../pages/auth";
 import ProtectedRoute from "../components/Auth/ProtectedRoutes";
 import {
+  DishOrderDetails,
   Dishes,
   DishesOrders,
   ResAdmins,
@@ -24,6 +25,7 @@ export const AdminRoutes = () => {
             <Route path="/restaurants" element={<Restaurants />} />
             <Route path="/dishes" element={<Dishes />} />
             <Route path="/dish-orders" element={<DishesOrders />} />
+            <Route path="/order/:id" element={<DishOrderDetails />} />
             <Route path="/reservations" element={<Reservations />} />
             <Route
               path="/reservation-details/:id"

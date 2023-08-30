@@ -31,7 +31,7 @@ const UserInfoCard = ({ user }) => {
           <span className="font-bold mr-1">Phone Number:</span>
           {user.phoneNumber}
         </p>
-        <div className="mt-2">
+        {/* <div className="mt-2">
           <span
             className={`px-2 py-1 text-xs rounded-sm ${
               user.userStatus === "active"
@@ -41,7 +41,7 @@ const UserInfoCard = ({ user }) => {
           >
             {user.userStatus}
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

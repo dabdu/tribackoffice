@@ -1,3 +1,4 @@
+import DishOrderDetails from "./DishOrderDetails";
 import Dishes from "./Dishes";
 import DishesOrders from "./DishesOrders";
 import ResAdmins from "./ResAdmins";
@@ -12,4 +13,5 @@ export {
   ReservationDetails,
   Dishes,
   DishesOrders,
+  DishOrderDetails,
 };

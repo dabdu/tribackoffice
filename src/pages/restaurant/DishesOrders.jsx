@@ -96,9 +96,7 @@ export default function DishesOrders() {
                     <tr
                       key={item?._id}
                       className="bg-white border-b border-b-blue-400 dark:bg-gray-800 dark:border-gray-700 pt-8  hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer"
-                      onClick={() =>
-                        navigate(`/reservation-details/${item?._id}`)
-                      }
+                      onClick={() => navigate(`/order/${item?._id}`)}
                     >
                       <TableData>{item?.orderedItems?.length}</TableData>
                       <TableData>{item?.userId?.name}</TableData>
