@@ -34,7 +34,7 @@ const CustomSetting = () => {
     setLoading(true);
     api
       .put(
-        "/delivery-charges",
+        "delivery-charges",
         { deliveryChargesPerMile },
         {
           headers: header(),
