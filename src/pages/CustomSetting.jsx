@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 const CustomSetting = () => {
   const [loading, setLoading] = useState(false);
   const [deliveryChargesPerMile, setDeliveryChargesPerMile] = useState(null);
+  const [web, setWeb] = useState("");
   const getDeliveryCharges = async () => {
     try {
       setLoading(true);
