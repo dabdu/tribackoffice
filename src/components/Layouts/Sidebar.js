@@ -22,7 +22,7 @@ const items = [
   },
 
   {
-    key: "users",
+    key: "restaurants",
     label: "Restaurants",
     path: "#",
     icon: <MdOutlineRestaurantMenu className="text-xl text-primary" />,
@@ -57,13 +57,14 @@ const items = [
         path: "/dish-orders",
         icon: <AiFillDribbbleCircle className="text-xl text-primary" />,
       },
-      {
-        key: "custom-settings",
-        label: "Dish Orders",
-        path: "/custom-settings",
-        icon: <BiCog className="text-xl text-primary" />,
-      },
     ],
+  },
+  {
+    key: "custom-settings",
+    label: "Custom Settings",
+    path: "/custom-settings",
+    icon: <BiCog className="text-xl text-primary" />,
+    dropdown: false,
   },
 ];
 export default function Sidebar() {

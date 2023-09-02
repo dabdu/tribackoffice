@@ -1,12 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import Header from "./Header";
 // import Header from "../Header";
 
 export default function MainLayout() {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <div className="flex flex-row bg-neutral-200 h-screen w-screen overflow-hidden pt-16 ">
         <Sidebar />
         {/* <div >Navbar</div> */}

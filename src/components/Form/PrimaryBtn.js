@@ -7,7 +7,7 @@ const PrimaryBtn = ({ color, text, onBtnClick, width }) => {
       onClick={onBtnClick}
       className={`${color ? color : "bg-primary"} ${
         width ? "w-[" + width + "px]" : "w-full"
-      } transition cursor-pointer duration-200  focus:ring-opacity-50 text-white py-2 px-2 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block`}
+      } transition cursor-pointer duration-200  focus:ring-opacity-50 text-white py-2 px-2 rounded-lg text-xs shadow-sm hover:shadow-md font-semibold text-center inline-block`}
     >
       <div>
         <span className="inline-block text-center">{text}</span>

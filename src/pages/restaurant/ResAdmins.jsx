@@ -56,7 +56,58 @@ export default function ResAdmins() {
       })
       .finally(() => setApproveLoading(false));
   }
-  async function onDeactivateUser(userID) {}
+  async function onDeactivateUser(userID) {
+    setApproveLoading(true);
+    api
+      .put(
+        "restaurant/deactivate-admin",
+        { userID },
+        {
+          headers: header(),
+        }
+      )
+      .then(async (res) => {
+        toast.success("Restaurant Vendor Deactivated Successfully");
+        await getResAdmins();
+        console.log(res.data);
+        return res;
+      })
+      .catch((err) => {
+        console.log(err.response);
+        if (err.response.data.message === undefined) {
+          toast.error(err.response.statusText);
+        } else {
+          toast.error(err.response.data.message);
+        }
+      })
+      .finally(() => setApproveLoading(false));
+  }
+  async function onReactivateUser(userID) {
+    setApproveLoading(true);
+    api
+      .put(
+        "restaurant/reactivate-admin",
+        { userID },
+        {
+          headers: header(),
+        }
+      )
+      .then(async (res) => {
+        toast.success("Restaurant Vendor Deactivated Successfully");
+        await getResAdmins();
+        console.log(res.data);
+        return res;
+      })
+      .catch((err) => {
+        console.log(err.response);
+        if (err.response.data.message === undefined) {
+          toast.error(err.response.statusText);
+        } else {
+          toast.error(err.response.data.message);
+        }
+      })
+      .finally(() => setApproveLoading(false));
+  }
   if (approveLoading) {
     return <Spinner />;
   }
@@ -131,20 +182,28 @@ export default function ResAdmins() {
                       <TableData>
                         <p
                           className={`${
-                            item?.userStatus === "pending"
+                            item?.userStatus === "PENDING"
                               ? "bg-red-700"
-                              : "bg-green-700"
-                          } px-2 py-1 rounded-md text-white font-medium`}
+                              : item?.userStatus === "DEACTIVATED"
+                              ? "bg-amber-700"
+                              : "bg-green-500"
+                          } px-2 py-1 rounded-md text-white text-center font-medium text-xs`}
                         >
                           {item?.userStatus}
                         </p>
                       </TableData>
                       <TableData>
-                        {item?.userStatus === "pending" ? (
+                        {item?.userStatus === "PENDING" ? (
                           <PrimaryBtn
                             text={"Approve"}
                             color={"bg-green-600"}
                             onBtnClick={() => onApproveUser(item?._id)}
+                          />
+                        ) : item?.userStatus === "DEACTIVATED" ? (
+                          <PrimaryBtn
+                            text={"Reactivate"}
+                            color={"bg-green-600"}
+                            onBtnClick={() => onReactivateUser(item?._id)}
                           />
                         ) : (
                           <PrimaryBtn
